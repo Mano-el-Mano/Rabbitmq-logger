@@ -7,17 +7,24 @@ import json
 
 
 class Consumer:
-    def __init__(self, config, logger: Logger):
+    def __init__(self, config, logger: Logger, credentials: pika.PlainCredentials, context):
         self.config = config
         self.queue_name = config.get('queue_name')
         self.exchange = config.get('exchange')
-        self.connection = self.create_connection()
         self.logger = logger
+        print(credentials)
+        self.credentials = credentials
+        self.context=context
+        self.connection = self.create_connection()
 
     def create_connection(self):
         print(self.config)
+        print(f' with {self.credentials} ')
         param = pika.ConnectionParameters(host=self.config['host'],
-                                          port=self.config['port'])
+                                          port=self.config['port'],
+                                          credentials=self.credentials,
+                                          virtual_host='/',
+                                          ssl_options=pika.SSLOptions(self.context))
         return pika.BlockingConnection(param)
 
     def on_message_callback(self, channel, method, properties, body):

@@ -7,4 +7,5 @@ def generate_mongo_uri(db_name: str, username: str, password: str):
 
 class LogTypes(enum.Enum):
     CAR_RENTAL = "CAR_RENTAL"
-    PROXY_SERVER = "PROXY_SERVER"
+    PROXY_SERVER = "PROXY_SERVER",
+    CAR_REVIEW = "CAR_REVIEW"
