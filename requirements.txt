@@ -1,0 +1,14 @@
+click==7.1.2
+dnspython==1.16.0
+Flask==1.1.2
+happybase==1.2.0
+itsdangerous==1.1.0
+Jinja2==2.11.2
+MarkupSafe==1.1.1
+pika==1.1.0
+ply==3.11
+pymongo==3.11.2
+python-dotenv==0.15.0
+six==1.15.0
+thriftpy2==0.4.14
+Werkzeug==1.0.1
